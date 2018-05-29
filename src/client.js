@@ -29,7 +29,8 @@ PortalClient.prototype.handleMessage = function (e) {
 PortalClient.prototype.insertFrame = function (callback) {
   var frame = document.createElement('iframe');
 
-  frame.src = this.origin + this.path + '?src=' + encodeURIComponent(window.location.origin);
+  var questionOrAmp = (this.origin + this.path).indexOf("?") === -1 ? "?" : "&"
+  frame.src = this.origin + this.path + questionOrAmp + 'src=' + encodeURIComponent(window.location.origin);
   frame.style.visibility = 'hidden';
   frame.style.position = 'absolute';
   frame.style.top = '-100px';
